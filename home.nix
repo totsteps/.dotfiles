@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "mac";
-  home.homeDirectory = "/Users/mac";
+  home.username = "gagan";
+  home.homeDirectory = "/Users/gagan";
 
+	# silent nix news
   news.display = "silent";
  
   home.packages = [
@@ -17,11 +18,9 @@
     pkgs.gh
     pkgs.git
     pkgs.git-standup
-    pkgs.heroku
     pkgs.hexyl
     pkgs.less
     pkgs.nodejs-16_x
-    pkgs.nodePackages.pnpm
     pkgs.jdk
     pkgs.pueue
     pkgs.python3Full
