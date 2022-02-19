@@ -4,35 +4,38 @@
   home.username = "gagan";
   home.homeDirectory = "/Users/gagan";
 
-	# silent nix news
+  # silent nix news
   news.display = "silent";
  
+  # abstract these into personal and work related files.
   home.packages = [
     pkgs.bat
-    # delta has no prebuilt derivation for 'macOS', building it from source fails with a linker error!
-    # pkgs.delta
+    pkgs.delta
     pkgs.dive
     pkgs.exa
-    pkgs.exercism
-    pkgs.fpp
+    # https://nix-community.github.io/home-manager/options.html#opt-programs.gh.settings
     pkgs.gh
     pkgs.git
     pkgs.git-standup
-    pkgs.hexyl
     pkgs.less
     pkgs.nodejs-16_x
-    pkgs.jdk
     pkgs.pueue
-    pkgs.python3Full
     pkgs.rustup
-    pkgs.starship
+    # compile error when building starship
+    # pkgs.starship
     pkgs.tokei
     pkgs.tree
     pkgs.yarn
+    pkgs.zsh-autosuggestions
+    pkgs.zsh-completions
     pkgs.zoxide
   ];
 
+  programs.zsh = import ./zsh/zsh.nix;
+  programs.git = import ./git/git.nix;
+  programs.bat = {};
+  # ln -s "$(pwd)/home.nix" /Users/gagan/.config/nixpkg
+	
   home.stateVersion = "22.05";
-
   programs.home-manager.enable = true;
 }
