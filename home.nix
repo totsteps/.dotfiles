@@ -17,6 +17,7 @@
     pkgs.gh
     pkgs.git
     pkgs.git-standup
+    # split work related packages
     pkgs.go
     pkgs.less
     pkgs.nodejs-16_x
@@ -36,8 +37,7 @@
     pkgs.nodePackages.serve
     pkgs.nodePackages.vercel
 
-    # nix formatter
-    # https://github.com/nix-community/nixpkgs-fmt
+    # nix formatter - https://github.com/nix-community/nixpkgs-fmt
     pkgs.nixpkgs-fmt
   ];
 
