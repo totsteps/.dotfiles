@@ -6,7 +6,7 @@
 
   # silent nix news
   news.display = "silent";
- 
+
   # abstract these into personal and work related files.
   home.packages = [
     pkgs.bat
@@ -17,6 +17,7 @@
     pkgs.gh
     pkgs.git
     pkgs.git-standup
+    pkgs.go
     pkgs.less
     pkgs.nodejs-16_x
     pkgs.pueue
@@ -25,17 +26,28 @@
     # pkgs.starship
     pkgs.tokei
     pkgs.tree
+    pkgs.tmux
     pkgs.yarn
     pkgs.zsh-autosuggestions
     pkgs.zsh-completions
+    pkgs.zellij
     pkgs.zoxide
+
+    pkgs.nodePackages.serve
+    pkgs.nodePackages.vercel
+
+    # nix formatter
+    # https://github.com/nix-community/nixpkgs-fmt
+    pkgs.nixpkgs-fmt
   ];
 
-  programs.zsh = import ./zsh/zsh.nix;
   programs.git = import ./git/git.nix;
-  programs.bat = {};
+  programs.gh = import ./git/gh.nix;
+  programs.zellij = import ./zellij/zellij.nix;
+  programs.zsh = import ./zsh/zsh.nix;
+  programs.bat = { };
   # ln -s "$(pwd)/home.nix" /Users/gagan/.config/nixpkg
-	
+
   home.stateVersion = "22.05";
   programs.home-manager.enable = true;
 }
