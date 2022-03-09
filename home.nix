@@ -4,6 +4,8 @@
   home.username = "gagan";
   home.homeDirectory = "/Users/gagan";
 
+  home.file.".config/git/ignore".source = ./.gitignore;
+
   # silent nix news
   news.display = "silent";
 
@@ -13,14 +15,12 @@
     pkgs.delta
     pkgs.dive
     pkgs.exa
-    # https://nix-community.github.io/home-manager/options.html#opt-programs.gh.settings
-    pkgs.gh
-    pkgs.git
     pkgs.git-standup
     # split work related packages
     pkgs.go
     pkgs.less
-    pkgs.nodejs-16_x
+    # pkgs.nodejs-16_x
+    pkgs.nodejs-14_x
     pkgs.pueue
     pkgs.rustup
     # compile error when building starship
@@ -29,10 +29,6 @@
     pkgs.tree
     pkgs.tmux
     pkgs.yarn
-    pkgs.zsh-autosuggestions
-    pkgs.zsh-completions
-    pkgs.zellij
-    pkgs.zoxide
 
     pkgs.nodePackages.serve
     pkgs.nodePackages.vercel
@@ -45,7 +41,11 @@
   programs.gh = import ./git/gh.nix;
   programs.zellij = import ./zellij/zellij.nix;
   programs.zsh = import ./zsh/zsh.nix;
+  programs.neovim = import ./vim/vim.nix;
   programs.bat = { };
+  programs.zoxide = {
+    enable = true;
+  };
   # ln -s "$(pwd)/home.nix" /Users/gagan/.config/nixpkg
 
   home.stateVersion = "22.05";

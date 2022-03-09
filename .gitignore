@@ -1,2 +1,48 @@
+# https://nix-community.github.io/home-manager/options.html#opt-programs.git.ignores
+
+# https://github.com/github/gitignore/tree/master/Global
+
+# Mac configuration files
+# General
 .DS_Store
+Desktop.ini
+
+# Thumbnails
+._*
+Thumbs.db
+
+# Files that might appear in the root of a volume
+.fseventsd
+.Spotlight-V100
+.Trashes
+.com.apple.timemachine.donotpresent
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+*.eml
+.shelf
 .idea/
+out/
+*.class
+
+# CMake
+cmake-build-*/
+
+# VSCode
+# Local History for Visual Studio Code
+.history/
+
+# rust
+target/
+**/*.rs.bk
+
+# node
+node_modules/
+dist/
+build/
+
+# env
+.env
+.vercel

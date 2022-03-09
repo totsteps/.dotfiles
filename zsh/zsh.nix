@@ -7,8 +7,10 @@
     g = "git";
     gs = "g s";
     gss = "g status";
+    ga = "g add";
     ".." = "cd ..";
     "..." = "cd ../..";
+    "...." = "cd ../../..";
     "c" = "clear";
     "j" = "z";
 
@@ -16,6 +18,9 @@
     ls = "exa -1F --group-directories-first";
     l = "exa -lagH --group-directories-first --git";
     ll = "exa -l --group-directories-first --git";
+
+    # neovim
+    vi = "nvim";
 
     # edit and source configs
     econf = "code ~/dev/.dotfiles";
@@ -32,10 +37,10 @@
 
     # nix
     hm = "home-manager";
-    hms = "home-manager switch | sconf";
+    # source .zshrc after creating new generation
+    hms = "home-manager switch; sconf";
     hmg = "home-manager generations";
-    hmp = "home-manager packages | sort";
-
+    hmp = "home-manager packages S";
     clean = "nix-collect-garbage -d";
 
     # yarn
@@ -50,9 +55,28 @@
     yfc = "yarn format:check";
 
     # ip address
-    ip = "echo Your ip is; dig +short myip.opendns.com @resolver1.opendns.com;";
+    ip = "echo Your ip is 🛖; dig +short myip.opendns.com @resolver1.opendns.com;";
     # ping google.com
-    pg = "echo 'Pinging Google' && ping google.com";
+    pg = "echo 'Pinging Google 🚨'; ping google.com";
+  };
+
+  initExtra = ''
+    mkcd() {
+      mkdir -p $@; cd ''${@:$#}
+    }
+
+    # benchmarking zsh launch time
+    # https://blog.mattclemente.com/2020/06/26/oh-my-zsh-slow-to-load.html#initial-setup
+    zshtime() {
+      shell=''${1-$SHELL}
+      for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+    }
+  '';
+
+  shellGlobalAliases = {
+    uuid = "$(uuidgen | tr -d \\n)";
+    G = "| grep";
+    S = "| sort";
   };
 
   enableAutosuggestions = true;

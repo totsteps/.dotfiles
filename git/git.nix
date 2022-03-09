@@ -12,7 +12,16 @@
     s = "status";
     co = "checkout";
     b = "branch";
-    # not working
-    # ignores = [ "node_modules/" ];
+  };
+  extraConfig = {
+    core = {
+      editor = "vim";
+    };
+    color = {
+      ui = true;
+    };
+    init = {
+      defaultBranch = "main";
+    };
   };
 }
