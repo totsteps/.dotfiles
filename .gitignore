@@ -27,21 +27,9 @@ Thumbs.db
 out/
 *.class
 
-# CMake
-cmake-build-*/
-
 # VSCode
 # Local History for Visual Studio Code
 .history/
-
-# rust
-target/
-**/*.rs.bk
-
-# node
-node_modules/
-dist/
-build/
 
 # env
 .env

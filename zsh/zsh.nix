@@ -1,7 +1,4 @@
 {
-  # todo: source zsh after creating a new generation, otherwise the
-  # aliases dont work. Maybe execute the source command once new generation
-  # has been created in this file, or at the very end of the home.nix file?
   enable = true;
   shellAliases = {
     g = "git";
@@ -14,6 +11,16 @@
     "c" = "clear";
     "j" = "z";
 
+    # copy contents of a file
+    "copy" = "pbcopy < ";
+    # zip directories excluding .DS_Store
+    "zip" = "gzip --recursive --best --keep";
+    # get relative path, depends on coreutils
+    "path" = "realpath";
+    # Hide/show all desktop icons (useful when presenting)
+    "hidedesk" = "defaults write com.apple.finder CreateDesktop -bool false && killall Finder";
+    "showdesk" = "defaults write com.apple.finder CreateDesktop -bool true && killall Finder";
+
     # exa
     ls = "exa -1F --group-directories-first";
     l = "exa -lagH --group-directories-first --git";
@@ -21,6 +28,7 @@
 
     # neovim
     vi = "nvim";
+    vim = "nvim";
 
     # edit and source configs
     econf = "code ~/dev/.dotfiles";
@@ -43,16 +51,17 @@
     hmp = "home-manager packages S";
     clean = "nix-collect-garbage -d";
 
-    # yarn
-    yi = "yarn install";
-    ya = "yarn add";
-    ys = "yarn start";
-    yd = "yarn dev";
-    yb = "yarn build";
-    yt = "yarn test";
-    yl = "yarn lint";
-    yf = "yarn format";
-    yfc = "yarn format:check";
+    # pnpm
+    y = "pnpm";
+    yi = "pnpm install";
+    ya = "pnpm add";
+    yag = "pnpm add -g";
+    ys = "pnpm start";
+    yd = "pnpm dev";
+    yb = "pnpm build";
+    yt = "pnpm test";
+    yl = "pnpm lint";
+    yf = "pnpm format";
 
     # ip address
     ip = "echo Your ip is 🛖; dig +short myip.opendns.com @resolver1.opendns.com;";
@@ -71,6 +80,11 @@
       shell=''${1-$SHELL}
       for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
     }
+
+    # todo see what's the right way to export paths in nix
+    # pnpm
+    export PNPM_HOME="/Users/gagan/Library/pnpm"
+    export PATH="$PNPM_HOME:$PATH"
   '';
 
   shellGlobalAliases = {
