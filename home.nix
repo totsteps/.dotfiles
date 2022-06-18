@@ -5,6 +5,9 @@
   home.homeDirectory = "/Users/gagan";
 
   home.file.".config/git/ignore".source = ./.gitignore;
+  home.file.".config/git/githelpers.sh".source = ./git/githelpers.sh;
+  # vim colors
+  home.file.".config/nvim/colors".source = ./vim/colors;
 
   # silent nix news
   news.display = "silent";
