@@ -1,0 +1,65 @@
+:imap jj <Esc>
+set timeoutlen=350
+set relativenumber
+set number
+set ideajoin
+
+" Show a few lines of context around the cursor.
+set scrolloff=4
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  --------------------------------
+# set surround
+set multiple-cursors
+map mc <A-n>
+map mx <A-x>
+map mp <A-p>
+
+# set commentary
+# set argtextobj
+set easymotion
+map <leader>s <easymotion-s>
+map <leader>f <easymotion-f>
+
+# set textobj-entire
+# set ReplaceWithRegister
+
+""" Plugin settings -------------------------
+# let g:argtextobj_pairs="[:],(:),<:>"
+
+""" Common settings -------------------------
+# set showmode
+
+""" Idea specific settings ------------------
+set ideastatusicon=gray
+set idearefactormode=keep
+
+""" Mappings
+# map <leader>f <Plug>(easymotion-s)
+# map <leader>e <Plug>(easymotion-f)
+
+""" IDEA Actions
+map <leader>d <Action>(Debug)
+map <leader>r <Action>(RenameElement)
+map <leader>c <Action>(Stop)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+# map <leader> <Action>(TogglePresentationMode)
+
+map <leader>h <Action>(PreviousTab)
+map <leader>l <Action>(NextTab)
+
+map <leader>s <Action>(SelectInProjectView)
+map <leader>a <Action>(Annotate)
+# map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+# map <S-Space> <Action>(GotoNextError)
+
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>fs <Action>(FileStructurePopup)

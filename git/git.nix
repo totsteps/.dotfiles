@@ -31,7 +31,7 @@
     h = "!git head";
 
     # hp = head with patch
-    hp = "!. ~/.config/git/githelpers.sh && show_git_head";
+    hp = "!. ~/.config/git/githelpers.sh; show_git_head";
 
     # r = recent commits, only current branch
     r = "!GIT_NO_PAGER=1 git l -20";
@@ -40,18 +40,18 @@
     ra = "r --all";
 
     # b = all branches
-    b = "!. ~/.config/git/githelpers.sh && pretty_git_branch";
+    b = "!. ~/.config/git/githelpers.sh; pretty_git_branch";
 
     # bs = all branches, sorted by last commit date
-    bs = "!. ~/.config/git/githelpers.sh && pretty_git_branch_sorted";
+    bs = "!. ~/.config/git/githelpers.sh; pretty_git_branch_sorted";
 
     # d = show git diff with pager
-    d = "!. ~/.config/git/githelpers.sh && show_git_diff";
+    d = "!. ~/.config/git/githelpers.sh; show_git_diff";
 
     # stat = shows insertions and deletions from staged files
-    stat = "!. ~/.config/git/githelpers.sh && show_git_stat";
+    stat = "!. ~/.config/git/githelpers.sh; show_git_stat";
 
-    stashls = "!. ~/.config/git/githelpers.sh && show_git_stash";
+    stashls = "!. ~/.config/git/githelpers.sh; show_git_stash";
 
     # tags = "tag -l $* | !. ~/.config/git/githelpers.sh && git_page_maybe"
 
@@ -59,7 +59,7 @@
     whoami = "config user.email";
 
     # List contributors with number of commits.
-    contributors = "shortlog --summary --numbered";
+    contributors = "!. ~/.config/git/githelpers.sh; git shortlog --summary --numbered | git_page_maybe";
   };
   extraConfig = {
     init = {
@@ -67,7 +67,7 @@
     };
     core = {
       editor = "vim";
-      pager = "less -LRc --mouse";
+      pager = "LESS='LRc --mouse' delta";
     };
     color = {
       ui = true;

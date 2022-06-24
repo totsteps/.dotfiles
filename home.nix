@@ -8,6 +8,10 @@
   home.file.".config/git/githelpers.sh".source = ./git/githelpers.sh;
   # vim colors
   home.file.".config/nvim/colors".source = ./vim/colors;
+  #  IntelliJ IDEA vim plugin config
+  home.file.".ideavimrc".source = ./.ideavimrc;
+  # cargo aliases doesn't seem to work
+  home.file.".cargo/config".source = ./cargo/config;
 
   # silent nix news
   news.display = "silent";
@@ -24,22 +28,19 @@
     pkgs.gh
     pkgs.git
     pkgs.git-standup
-    # split work related packages
-    # pkgs.go
+    pkgs.just
     pkgs.less
     pkgs.nodejs-16_x
     pkgs.nushell
     pkgs.pueue
     pkgs.rustup
-    # compile error when building starship
     pkgs.starship
     pkgs.tmux
     pkgs.tokei
     pkgs.tree
     pkgs.yarn
-
     pkgs.git-open
-    # pkgs.nodePackages.prettier
+    pkgs.nodePackages.prettier
     pkgs.nodePackages.nodemon
     pkgs.nodePackages.pnpm
     pkgs.nodePackages.serve

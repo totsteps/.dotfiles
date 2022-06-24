@@ -1,14 +1,13 @@
-# create a directory and cd into it
-mkcd() {
-  mkdir -p $@
-  cd ''${@:$#}
-}
-
 # benchmark zsh launch time
 # https://blog.mattclemente.com/2020/06/26/oh-my-zsh-slow-to-load.html#initial-setup
 zshtime() {
   shell=''${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
+
+# create a directory and cd into it
+mkcd() {
+  mkdir -p $@ && cd ${@:$#}
 }
 
 # copy contents of a file
@@ -18,7 +17,7 @@ alias diff="diff --color=auto --width='$(($(tput cols) - 2))'"
 # zoxide
 alias j="z"
 
-# get relative path, depends on coreutils
+# get relative path, requires coreutils
 alias path="realpath"
 
 # zip directories excluding
@@ -47,6 +46,7 @@ alias hmg="home-manager generations"
 alias hmp="home-manager packages S"
 alias clean="nix-collect-garbage -d"
 
+setopt autocd
 alias ..="cd .."
 alias ...="../.."
 alias ....="../../.."
